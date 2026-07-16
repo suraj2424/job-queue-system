@@ -7,6 +7,7 @@
     "@types/bun": "latest",
     "@types/express": "^5.0.6",
     "@types/node": "^26.1.1",
+    "@types/pg": "^8.20.0",
     "prisma": "^7.8.0"
   },
   "peerDependencies": {
@@ -16,10 +17,12 @@
     "dev": "bun --watch src/index.ts"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "bullmq": "^5.80.2",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "ioredis": "^5.11.1"
+    "ioredis": "^5.11.1",
+    "pg": "^8.22.0"
   }
 }

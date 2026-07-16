@@ -1,5 +1,5 @@
 import { JobStatus, JobType } from "@prisma/client";
-import prisma from "../prisma";
+import prisma from "../db/prisma";
 
 class JobRepository {
   async create(data: {

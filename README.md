@@ -43,7 +43,17 @@ bunx prisma migrate dev --name init
 
 
 # Quesetions
-
+# Initial Design
 ## Interviewer: "How would you know if your system is overloaded?"
 "I track two separate timestamps — `createdAt` when the job enters, and `startedAt` when a worker picks it up. If the gap between them grows, it means jobs are waiting too long in the queue, signaling I need to scale up workers."
+
+
+# Service Layer
+## Q1. Why save to the database before pushing to the queue?
+Answer:
+- The database is the source of truth. Persisting the job first ensures that even if queue insertion fails, the job isn't lost and can be retried later.
+
+## Q2. Why update the status after queue insertion?
+Answer:
+- A job should only be marked as QUEUED after BullMQ successfully accepts it. Updating the status earlier could leave the database inconsistent if the queue operation fails.
 
