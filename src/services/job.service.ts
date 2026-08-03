@@ -23,8 +23,6 @@ class JobService {
     })
 
     const latestJob = await jobRepository.findById(createdJob.id);
-
-    console.log("Returned job: ", latestJob);
     
     return latestJob;
   }

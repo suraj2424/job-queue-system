@@ -1,9 +1,7 @@
 import express from "express";
-import dotenv from "dotenv";
-
-import jobRoutes  from "./api/routes/job.routes"
-
-dotenv.config();
+import jobRoutes from "./api/routes/job.routes"
+import "./workers/worker.manager";
+import { config } from "./config/env";
 
 const app = express();
 
@@ -24,9 +22,7 @@ app.get("/", (_req, res) => {
     });
 });
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
+app.listen(config.app.port, () => {
+  console.log(`✅ Server running on port ${config.app.port}`);
   console.log(`📌 POST /jobs - Create a new job`)
 });

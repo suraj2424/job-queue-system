@@ -6,9 +6,12 @@ class JobController {
     try {
       const job = await jobService.createJob(req.body);
 
-      console.log("Controller job: ", job);
-      console.log("Type:", typeof job);
-      console.log("Keys:", Object.keys(job));
+      if (!job) {
+        return res.status(500).json({
+          success: false,
+          message: "Failed to retrieve created job."
+        });
+      }
 
       return res.status(201).json({
         success: true,
